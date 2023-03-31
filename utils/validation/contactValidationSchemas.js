@@ -27,6 +27,21 @@ const validate = (schema, obj, next) => {
   next();
 };
 
+
+const validateBody = (schema) => {
+    return (req, res, next) => {
+      const { error } = schema.validate(req.body);
+  
+      if (error) {
+        return next(error);
+      }
+  
+      next();
+    };
+  };
+
+module.exports = { validateBody };
+
 module.exports.createContact = (req, _res, next) => {
   return validate(schemaCreateContact, req.body, next);
 };
@@ -34,3 +49,5 @@ module.exports.createContact = (req, _res, next) => {
 module.exports.updateContact = (req, _res, next) => {
   return validate(schemaUpdateContact, req.body, next);
 };
+
+ 
