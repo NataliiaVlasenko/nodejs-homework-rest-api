@@ -1,6 +1,5 @@
-const { Contact} = require("../models/contact");
+const { Contact } = require("../models/contact");
 const { CreateError } = require("../utils/createError");
-
 
 const getContacts = async (req, res) => {
   const result = await Contact.find();
@@ -12,10 +11,8 @@ const getContacts = async (req, res) => {
 };
 
 const getContact = async (req, res) => {
-  
   const contactId = req.params.id;
   const result = await Contact.findById(contactId);
-  console.log(result);
   if (!result) {
     throw new CreateError(404, `Contact with id - ${contactId} not found`);
   }
@@ -37,7 +34,7 @@ const addContact = async (req, res) => {
 };
 
 const updateContact = async (req, res) => {
-  const contactId  = req.params.id;
+  const contactId = req.params.id;
   const result = await Contact.findByIdAndUpdate(contactId, req.body, {
     new: true,
   });
@@ -52,7 +49,7 @@ const updateContact = async (req, res) => {
 };
 
 const updateStatusContact = async (req, res) => {
-  const contactId  = req.params.id;
+  const contactId = req.params.id;
   const result = await Contact.findByIdAndUpdate(contactId, req.body, {
     new: true,
   });
@@ -66,9 +63,8 @@ const updateStatusContact = async (req, res) => {
   });
 };
 
-
 const removeContact = async (req, res) => {
-  const contactId  = req.params.id;
+  const contactId = req.params.id;
   const result = await Contact.findByIdAndRemove(contactId);
   if (!result) {
     throw new CreateError(`Contact with id - ${contactId} not found`);
