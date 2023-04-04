@@ -49,5 +49,3 @@ module.exports.createContact = (req, _res, next) => {
 module.exports.updateContact = (req, _res, next) => {
   return validate(schemaUpdateContact, req.body, next);
 };
-
- 
