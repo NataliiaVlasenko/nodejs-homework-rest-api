@@ -7,13 +7,8 @@ const jwt = require("jsonwebtoken");
 const { SECRET_KEY } = process.env;
 
 const register = async (req, res) => {
-  const { error } = schemas.register.validate(req.body);
-  if (error) {
-    throw CreateError(400, error.message);
-  }
 
   const { email, password } = req.body;
-  console.log(email, password);
   const user = await User.findOne({ email });
   if (user) {
     throw new CreateError(409, `${email} is in use`);
