@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require("joi");
 
 const schemaCreateContact = Joi.object({
   name: Joi.string().min(3).max(30).required(),
@@ -21,24 +21,23 @@ const validate = (schema, obj, next) => {
   if (error) {
     return next({
       status: 400,
-      message: 'Bad request',
+      message: "Bad request",
     });
   }
   next();
 };
 
-
 const validateBody = (schema) => {
-    return (req, res, next) => {
-      const { error } = schema.validate(req.body);
-  
-      if (error) {
-        return next(error);
-      }
-  
-      next();
-    };
+  return (req, res, next) => {
+    const { error } = schema.validate(req.body);
+
+    if (error) {
+      return next(error);
+    }
+
+    next();
   };
+};
 
 module.exports = { validateBody };
 
