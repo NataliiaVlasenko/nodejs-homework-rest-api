@@ -1,6 +1,7 @@
 const { schemas } = require("../models/user");
 const { CreateError } = require("../utils/createError");
 
+
 const bodyValidation = async (req, _, next) => {
   try {
     const { error } = schemas.register.validate(req.body);

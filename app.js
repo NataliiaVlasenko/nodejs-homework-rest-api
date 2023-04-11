@@ -3,7 +3,7 @@ const logger = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
 
-global.basedir = __dirname;
+global.basedir = process.cwd();
 
 const authRouter = require("./routes/api/auth");
 const contactsRouter = require("./routes/api/contacts");
