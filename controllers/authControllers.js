@@ -1,4 +1,5 @@
-const { User, schemas } = require("../models/user");
+const { User } = require("../models/user");
+const { schemas } = require("../utils/validation/userValidationSchema");
 const CreateError = require("../utils/createError");
 const sendEmail = require("../utils/sendEmail");
 const gravatar = require("gravatar");
